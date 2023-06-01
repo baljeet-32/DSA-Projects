@@ -7,16 +7,32 @@ function Parenthesis() {
           let ch = e.target.value;
           let n = ch.length
 
-          setExp(ch)
+          //setExp(ch)
           let d =0;
+          let newExp =""
+          let Isbalance =true
           for(let i=0;i<n;i++)
           {
-            if(ch[i]=='(')d++;
-            else if(ch[i]==')')d--;
-            if(d<0)break;
+            if(ch[i]=='(')
+            {
+              d++;
+              newExp+="(";
+            }else if(ch[i]==')')
+            {
+              d--;
+              newExp+=")";
+            }
+            if(d<0)
+            {
+              Isbalance = false
+            }
           }
-          if(d==0) setDepth(0)
+          if(d>0)Isbalance=false
+          setExp(newExp)
+          if(Isbalance) setDepth(0)
           else setDepth(-1)
+
+          
 
 
          console.log(depth)
